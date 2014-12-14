@@ -1,5 +1,9 @@
-/Makefile
-/Makefile.in
+Makefile
+Makefile.in
+/include/
+/po/POTFILES
+*/Makefile
+*/Makefile.in
 /aclocal.m4
 /autom4te.cache/
 /config.*
@@ -15,4 +19,11 @@
 .dirstamp
 .libs/
 *.l[ao]
+*.o
 *~
+Makefile
+*.a
+*config.h
+
+src/mednafen
+src/hw_cpu/gen68k

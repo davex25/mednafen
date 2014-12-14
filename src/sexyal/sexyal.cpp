@@ -158,49 +158,49 @@ struct SexyAL_driver
 
 static SexyAL_driver drivers[] = 
 {
-        #if HAVE_ALSA
-        { SEXYAL_TYPE_ALSA, "ALSA", "alsa", SexyALI_ALSA_Open, SexyALI_ALSA_EnumerateDevices },
-        #endif
-
-	#if HAVE_OSSDSP
-	{ SEXYAL_TYPE_OSSDSP, "OSS(/dev/dsp*)", "oss", SexyALI_OSS_Open, SexyALI_OSS_EnumerateDevices },
-	#endif
-
 	//
 	// WASAPISH should have higher priority(comes before in this array) than dsound.
 	//
-        #if HAVE_WASAPI
-        { SEXYAL_TYPE_WASAPISH, "WASAPI(Shared mode)", "wasapish", SexyALI_WASAPISH_Open, NULL, SexyALI_WASAPISH_Avail },
-        #endif
+#if HAVE_WASAPI
+	{ SEXYAL_TYPE_WASAPISH, "WASAPI(Shared mode)", "wasapish", SexyALI_WASAPISH_Open, NULL, SexyALI_WASAPISH_Avail },
+#endif
 
-        #if HAVE_DIRECTSOUND
-        { SEXYAL_TYPE_DIRECTSOUND, "DirectSound", "dsound", SexyALI_DSound_Open, NULL },
-        #endif
+#if HAVE_DIRECTSOUND
+	{ SEXYAL_TYPE_DIRECTSOUND, "DirectSound", "dsound", SexyALI_DSound_Open, NULL },
+#endif
 
-        #if HAVE_WASAPI
-        { SEXYAL_TYPE_WASAPI, "WASAPI(Exclusive mode)", "wasapi", SexyALI_WASAPI_Open, 	NULL, SexyALI_WASAPI_Avail },
-        #endif
+#if HAVE_WASAPI
+	{ SEXYAL_TYPE_WASAPI, "WASAPI(Exclusive mode)", "wasapi", SexyALI_WASAPI_Open, 	NULL, SexyALI_WASAPI_Avail },
+#endif
 
-	#ifdef DOS
+#ifdef DOS
 	//
 	// List SB first, to try to prevent fubaring a PCI sound card's active Sound Blaster emulation(if present) by directly programming its PCI registers.
 	//
 	{ SEXYAL_TYPE_DOS_SB, "Sound Blaster 2.0/Pro/16", "sb", SexyALI_DOS_SB_Open, 	NULL, SexyALI_DOS_SB_Avail },
-        { SEXYAL_TYPE_DOS_ES1370, "Ensoniq ES1370", "es1370", SexyALI_DOS_ES1370_Open, 	NULL, SexyALI_DOS_ES1370_Avail },
+	{ SEXYAL_TYPE_DOS_ES1370, "Ensoniq ES1370", "es1370", SexyALI_DOS_ES1370_Open, 	NULL, SexyALI_DOS_ES1370_Avail },
 	{ SEXYAL_TYPE_DOS_ES1371, "Ensoniq ES1371", "es1371", SexyALI_DOS_ES1371_Open, 	NULL, SexyALI_DOS_ES1371_Avail },
 	{ SEXYAL_TYPE_DOS_CMI8738, "CMI8738", "cmi8738", SexyALI_DOS_CMI8738_Open, 	NULL, SexyALI_DOS_CMI8738_Avail },
-	#endif
+#endif
 
 	//
 	// Keep SDL higher priority than JACK.
 	//
-        #if HAVE_SDL
-        { SEXYAL_TYPE_SDL, "SDL", "sdl", SexyALI_SDL_Open, NULL },
-        #endif
+#if HAVE_SDL
+	{ SEXYAL_TYPE_SDL, "SDL", "sdl", SexyALI_SDL_Open, NULL },
+#endif
 
-        #if HAVE_JACK
-        { SEXYAL_TYPE_JACK, "JACK", "jack", SexyALI_JACK_Open, NULL },
-        #endif
+#if HAVE_JACK
+	{ SEXYAL_TYPE_JACK, "JACK", "jack", SexyALI_JACK_Open, NULL },
+#endif
+
+#if HAVE_ALSA
+	{ SEXYAL_TYPE_ALSA, "ALSA", "alsa", SexyALI_ALSA_Open, SexyALI_ALSA_EnumerateDevices },
+#endif
+
+#if HAVE_OSSDSP
+	{ SEXYAL_TYPE_OSSDSP, "OSS(/dev/dsp*)", "oss", SexyALI_OSS_Open, SexyALI_OSS_EnumerateDevices },
+#endif
 
 	{ SEXYAL_TYPE_DUMMY, "Dummy", "dummy", SexyALI_Dummy_Open, NULL },
 
